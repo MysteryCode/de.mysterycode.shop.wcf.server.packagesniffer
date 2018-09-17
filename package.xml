@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="de.mysterycode.shop.wcf.server.packagesniffer" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/package.xsd">
+	<packageinformation>
+		<packagename>VieCode Shop: Packagesniffer-Integration</packagename>
+		<packagename language="de">VieCode Shop: Packagesniffer-Integration</packagename>
+		<packagedescription><![CDATA[Allows the packagesniffer to read all available versions (belonging to a product or product option - skipping user related packages which could be private). This package does not allow any user/authentication/… to download any file.]]></packagedescription>
+		<packagedescription language="de"><![CDATA[Erlaubt dem Packagesniffer alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen. Benutzerbezogene Pakete könnten sensible Daten enthalten und werden außen vor gelassen. Das Paket gewährt zu keiner Zeit Zugriff auf die Downloads.]]></packagedescription>
+
+		<version>1.0.0 Beta 1</version>
+		<date>2018-09-18</date>
+
+		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
+	</packageinformation>
+
+	<authorinformation>
+		<author>Florian Gail</author>
+		<authorurl>https://www.mysterycode.de</authorurl>
+	</authorinformation>
+
+	<compatibility>
+		<api version="2018" />
+	</compatibility>
+
+	<requiredpackages>
+		<requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="7.0.0 Alpha 1">com.viecode.shop</requiredpackage>
+	</requiredpackages>
+
+	<instructions type="install">
+		<!-- files -->
+		<instruction type="file" application="shop" />
+
+		<!-- pips -->
+		<instruction type="eventListener" />
+	</instructions>
+</package>
