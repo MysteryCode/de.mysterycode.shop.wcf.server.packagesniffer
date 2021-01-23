@@ -6,16 +6,17 @@ use shop\data\storage\StorageList;
 use shop\data\wcf\package\WCFPackageList;
 use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\WCF;
+use wcf\util\StringUtil;
 use wcf\util\UserUtil;
 use wcf\util\XMLWriter;
 
 /**
  * Class PackagesnifferShopListener
  *
- * @package shop\system\event\listener
- * @author Florian Gail
- * @copyright 2018 Florian Gail <https://www.mysterycode.de>
- * @license Kostenlose Produkte <https://www.mysterycode.de/licenses/kostenlose-plugins/>
+ * @package	shop\system\event\listener
+ * @author	Florian Gail
+ * @copyright	2018-2021 Florian Gail <https://www.mysterycode.de>
+ * @license	Kostenlose Produkte <https://www.mysterycode.de/licenses/kostenlose-plugins/>
  */
 class PackagesnifferShopListener implements IParameterizedEventListener {
 	/**
@@ -26,10 +27,13 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		
 		// this script should never allow real downloads!
 		// that's why we return in case the page should send the download
-		if (isset($_POST['packageName']) || isset($_POST['packageVersion'])) return;
+		if (isset($_POST['packageName']) || isset($_POST['packageVersion']) || $eventObj->customer !== null) return;
 		
-		// return also in case the request was not trigered by the packagesniffer
-		if (UserUtil::convertIPv6To4(UserUtil::getIpAddress()) !== '79.133.35.78') return;
+		// return also in case the request was not triggered by the packagesniffer
+		$ipv6 = UserUtil::getIpAddress();
+		$ipv4 = UserUtil::convertIPv6To4($ipv6);
+		$whitelist = explode("\n", StringUtil::unifyNewlines(SHOP_SERVER_IP_WHITELIST));
+		if (!in_array($ipv4, $whitelist) && !in_array($ipv6, $whitelist)) return;
 		
 		// read every active storage that belongs to a product or option
 		// skips customer related storages

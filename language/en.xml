@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com https://www.woltlab.com/XSD/2019/language.xsd" languagecode="en">
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.shop_server_ip_whitelist"><![CDATA[Updateserver-Whitelist]]></item>
+		<item name="wcf.acp.option.shop_server_ip_whitelist.description"><![CDATA[The given IP-Addresses are allowed to fetch a list containing every available WSC-Package in the shop.]]></item>
+	</category>
+</language>
