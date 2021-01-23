@@ -3,34 +3,50 @@
 	<packageinformation>
 		<packagename>VieCode Shop: Packagesniffer-Integration</packagename>
 		<packagename language="de">VieCode Shop: Packagesniffer-Integration</packagename>
-		<packagedescription><![CDATA[Allows the packagesniffer to read all available versions (belonging to a product or product option - skipping user related packages which could be private). This package does not allow any user/authentication/… to download any file.]]></packagedescription>
-		<packagedescription language="de"><![CDATA[Erlaubt dem Packagesniffer alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen. Benutzerbezogene Pakete könnten sensible Daten enthalten und werden außen vor gelassen. Das Paket gewährt zu keiner Zeit Zugriff auf die Downloads.]]></packagedescription>
-
-		<version>1.0.0 Beta 1</version>
-		<date>2018-09-18</date>
-
+		<packagedescription><![CDATA[Allows specific servers by ip-address to read all available versions (belonging to a product or product option - skipping user related packages which could be private) without granting download-permissions.]]></packagedescription>
+		<packagedescription language="de"><![CDATA[Erlaubt bestimmten Servern auf Basis der IP-Adresse alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen ohne Downloads zu erlauben.]]></packagedescription>
+		
+		<version>1.0.0 Beta 2</version>
+		<date>2021-01-23</date>
+		
 		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
 	</packageinformation>
-
+	
 	<authorinformation>
 		<author>Florian Gail</author>
 		<authorurl>https://www.mysterycode.de</authorurl>
 	</authorinformation>
-
+	
 	<compatibility>
+		<api version="2019" />
 		<api version="2018" />
 	</compatibility>
-
+	
 	<requiredpackages>
 		<requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="7.0.0 Alpha 1">com.viecode.shop</requiredpackage>
 	</requiredpackages>
-
+	
+	<excludedpackages>
+		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="8.0.0 Alpha 1">com.viecode.shop</excludedpackage>
+	</excludedpackages>
+	
 	<instructions type="install">
 		<!-- files -->
 		<instruction type="file" application="shop" />
-
+		
 		<!-- pips -->
+		<instruction type="option" />
+		<instruction type="eventListener" />
+	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 Beta 1">
+		<!-- files -->
+		<instruction type="file" application="shop" />
+		
+		<!-- pips -->
+		<instruction type="option" />
 		<instruction type="eventListener" />
 	</instructions>
 </package>
