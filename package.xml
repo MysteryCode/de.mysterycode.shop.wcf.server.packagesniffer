@@ -39,6 +39,8 @@
 		<!-- pips -->
 		<instruction type="option" />
 		<instruction type="eventListener" />
+		
+		<instruction type="language" />
 	</instructions>
 	
 	<instructions type="update" fromversion="1.0.0 Beta 1">
@@ -48,5 +50,7 @@
 		<!-- pips -->
 		<instruction type="option" />
 		<instruction type="eventListener" />
+		
+		<instruction type="language" />
 	</instructions>
 </package>
