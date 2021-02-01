@@ -6,8 +6,8 @@
 		<packagedescription><![CDATA[Allows specific servers by ip-address to read all available versions (belonging to a product or product option - skipping user related packages which could be private) without granting download-permissions.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Erlaubt bestimmten Servern auf Basis der IP-Adresse alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen ohne Downloads zu erlauben.]]></packagedescription>
 		
-		<version>1.0.0 Beta 2</version>
-		<date>2021-01-23</date>
+		<version>1.0.0 Beta 3</version>
+		<date>2021-02-01</date>
 		
 		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
 	</packageinformation>
@@ -43,6 +43,12 @@
 		<instruction type="language" />
 	</instructions>
 	
+	<instructions type="update" fromversion="1.0.0 Beta 2">
+		<!-- files -->
+		<instruction type="file" application="shop" />
+		
+		<instruction type="language" />
+	</instructions>
 	<instructions type="update" fromversion="1.0.0 Beta 1">
 		<!-- files -->
 		<instruction type="file" application="shop" />
@@ -50,6 +56,8 @@
 		<!-- pips -->
 		<instruction type="option" />
 		<instruction type="eventListener" />
+		
+		<instruction type="language" />
 		
 		<instruction type="language" />
 	</instructions>
