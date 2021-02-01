@@ -45,7 +45,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		
 		// wrap storages into package list with packages-information
 		$packageList = new WCFPackageList();
-		if (!empty($storageList->get)) {
+		if (!empty($storageList->getObjectIDs())) {
 			$packageList->setVersionLoading(true);
 			$packageList->setPackageServerID($eventObj->server->serverID);
 			$packageList->setStorageIDs($storageList->getObjectIDs());
