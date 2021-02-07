@@ -2,19 +2,11 @@
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/eventListener.xsd">
 	<import>
 		<eventlistener name="snifferGrant">
-			<eventclassname>shop\page\UpdatePage</eventclassname>
-			<eventname>show</eventname>
-			<listenerclassname>shop\system\event\listener\PackagesnifferShopListener</listenerclassname>
-			<environment>user</environment>
-			<options>shop_server_ip_whitelist</options>
+			<eventclassname><![CDATA[shop\page\UpdatePage]]></eventclassname>
+			<eventname><![CDATA[show]]></eventname>
+			<listenerclassname><![CDATA[shop\system\event\listener\PackagesnifferShopListener]]></listenerclassname>
+			<environment><![CDATA[user]]></environment>
+			<options><![CDATA[shop_server_ip_whitelist]]></options>
 		</eventlistener>
 	</import>
-	<delete>
-		<eventlistener>
-			<eventclassname>shop\page\UpdatePage</eventclassname>
-			<eventname>assignVariables</eventname>
-			<listenerclassname>shop\system\event\listener\PackagesnifferShopListener</listenerclassname>
-			<environment>user</environment>
-		</eventlistener>
-	</delete>
 </data>
