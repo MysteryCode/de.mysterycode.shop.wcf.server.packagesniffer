@@ -54,13 +54,13 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		}
 		$packageList->readObjects();
 		
-		// show nice XML output generated live by PHP
-		// dancing is fun!
-		echo $this->generateXML($packageList);
-		
 		// cleanup session from user online list
 		WCF::getSession()->delete();
-		exit;
+		
+		// show nice XML output generated live by PHP
+		// dancing is fun!
+		header('Content-Type: application/xml; charset=utf-8');
+		die($this->generateXML($packageList));
 	}
 	
 	/**
@@ -73,7 +73,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		$xmlWriter = new XMLWriter();
 		$xmlWriter->beginDocument('section', 'http://www.woltlab.com', 'https://www.woltlab.com/XSD/hurricane/packageUpdateServer.xsd', ['name' => 'packages']);
 		
-		foreach ($packageList as $package) {
+		foreach ($packageList->getObjects() as $package) {
 			/** @var $package \shop\data\wcf\package\WCFPackage **/
 			
 			$xmlWriter->startElement('package', ['name' =>  $package->package]);
