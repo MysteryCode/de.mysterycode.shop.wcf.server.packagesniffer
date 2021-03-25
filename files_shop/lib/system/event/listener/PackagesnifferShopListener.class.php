@@ -75,6 +75,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		
 		foreach ($packageList as $package) {
 			/** @var $package \shop\data\wcf\package\WCFPackage **/
+			if ($package === null) continue;
 			
 			$xmlWriter->startElement('package', ['name' =>  $package->package]);
 			
