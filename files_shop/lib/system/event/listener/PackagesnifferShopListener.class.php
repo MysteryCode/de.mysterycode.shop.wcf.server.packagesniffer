@@ -38,8 +38,8 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		// read every active storage that belongs to a product or option
 		// skips customer related storages
 		$storageList = new StorageList();
-		$storageList->readObjectIDs();
 		$storageList->getConditionBuilder()->add('isAvailableForPackagesniffer = 1');
+		$storageList->readObjectIDs();
 		
 		// wrap storages into package list with packages-information
 		$packageList = new WCFPackageList();
