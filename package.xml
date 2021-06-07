@@ -6,8 +6,8 @@
 		<packagedescription><![CDATA[Allows specific servers by ip-address to read all available versions (belonging to a product or product option - skipping user related packages which could be private) without granting download-permissions.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Erlaubt bestimmten Servern auf Basis der IP-Adresse alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen ohne Downloads zu erlauben.]]></packagedescription>
 		
-		<version>1.0.0 Beta 3</version>
-		<date>2021-02-01</date>
+		<version>1.0.0</version>
+		<date>2021-06-07</date>
 		
 		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
 	</packageinformation>
@@ -24,7 +24,7 @@
 	
 	<requiredpackages>
 		<requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="7.0.0 Alpha 1">com.viecode.shop</requiredpackage>
+		<requiredpackage minversion="7.0.0">com.viecode.shop</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
@@ -33,31 +33,30 @@
 	</excludedpackages>
 	
 	<instructions type="install">
+		<instruction type="sql" />
+		
 		<!-- files_shop -->
+		<instruction type="acpTemplate" application="shop">acptemplates_shop.tar</instruction>
 		<instruction type="file" application="shop">files_shop.tar</instruction>
 		
 		<!-- pips -->
 		<instruction type="option" />
 		<instruction type="eventListener" />
+		<instruction type="templateListener" />
 		
 		<instruction type="language" />
 	</instructions>
 	
-	<instructions type="update" fromversion="1.0.0 Beta 2">
-		<!-- files_shop -->
-		<instruction type="file" application="shop">files_shop.tar</instruction>
+	<instructions type="update" fromversion="1.0.0 Beta 3">
+		<instruction type="sql">install.sql</instruction>
 		
-		<instruction type="language" />
-	</instructions>
-	<instructions type="update" fromversion="1.0.0 Beta 1">
 		<!-- files_shop -->
+		<instruction type="acpTemplate" application="shop">acptemplates_shop.tar</instruction>
 		<instruction type="file" application="shop">files_shop.tar</instruction>
 		
 		<!-- pips -->
-		<instruction type="option" />
 		<instruction type="eventListener" />
-		
-		<instruction type="language" />
+		<instruction type="templateListener" />
 		
 		<instruction type="language" />
 	</instructions>
