@@ -4,4 +4,8 @@
 		<item name="wcf.acp.option.shop_server_ip_whitelist"><![CDATA[Paketserver-Whitelist]]></item>
 		<item name="wcf.acp.option.shop_server_ip_whitelist.description"><![CDATA[Von den hier angegebenen IP-Adressen kann ohne Verwendung von Zugangsdaten die vollständige Liste aller im Shop verfügbaren WSC-Pakete abgerufen werden.]]></item>
 	</category>
+	<category name="shop.acp.product">
+		<item name="shop.acp.product.version.packagesniffer"><![CDATA[MysteryCode Packagesniffer]]></item>
+		<item name="shop.acp.product.version.packagesniffer.availibility"><![CDATA[Für Packagesniffer sichtbar machen]]></item>
+	</category>
 </language>

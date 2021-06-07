@@ -39,9 +39,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		// skips customer related storages
 		$storageList = new StorageList();
 		$storageList->readObjectIDs();
-		$storageList->getConditionBuilder()->add('(productID IS NOT NULL OR optionID IS NOT NULL)');
-		$storageList->getConditionBuilder()->add('customerID IS NULL');
-		$storageList->getConditionBuilder()->add('isActive = 1');
+		$storageList->getConditionBuilder()->add('isAvailableForPackagesniffer = 1');
 		
 		// wrap storages into package list with packages-information
 		$packageList = new WCFPackageList();
@@ -71,7 +69,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 	 */
 	protected function generateXML(WCFPackageList $packageList) {
 		$xmlWriter = new XMLWriter();
-		$xmlWriter->beginDocument('section', 'http://www.woltlab.com', 'https://www.woltlab.com/XSD/hurricane/packageUpdateServer.xsd', ['name' => 'packages']);
+		$xmlWriter->beginDocument('section', 'http://www.woltlab.com', 'https://www.woltlab.com/XSD/5.4/packageUpdateServer.xsd', ['name' => 'packages']);
 		
 		foreach ($packageList->getObjects() as $package) {
 			/** @var $package \shop\data\wcf\package\WCFPackage **/

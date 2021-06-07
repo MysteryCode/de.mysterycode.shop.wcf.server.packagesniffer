@@ -6,6 +6,16 @@
 			<eventname><![CDATA[show]]></eventname>
 			<listenerclassname><![CDATA[shop\system\event\listener\PackagesnifferShopListener]]></listenerclassname>
 			<environment><![CDATA[user]]></environment>
+			<inherit>1</inherit>
+			<options><![CDATA[shop_server_ip_whitelist]]></options>
+		</eventlistener>
+		
+		<eventlistener name="storageAddSnifferGrant">
+			<eventclassname>shop\acp\form\AbstractStorageForm</eventclassname>
+			<eventname>readFormParameters,assignVariables,save,readData</eventname>
+			<listenerclassname>shop\system\event\listener\ACPProductVersionAddFormPackagesnifferListener</listenerclassname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
 			<options><![CDATA[shop_server_ip_whitelist]]></options>
 		</eventlistener>
 	</import>
