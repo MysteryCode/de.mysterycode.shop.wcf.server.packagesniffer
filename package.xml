@@ -6,7 +6,7 @@
 		<packagedescription><![CDATA[Allows specific servers by ip-address to read all available versions (belonging to a product or product option - skipping user related packages which could be private) without granting download-permissions.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Erlaubt bestimmten Servern auf Basis der IP-Adresse alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen ohne Downloads zu erlauben.]]></packagedescription>
 		
-		<version>1.0.0 pl 1</version>
+		<version>1.0.0 pl 2</version>
 		<date>2021-06-07</date>
 		
 		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
@@ -61,6 +61,13 @@
 		<instruction type="language" />
 	</instructions>
 	<instructions type="update" fromversion="1.0.0">
+		<instruction type="file" application="shop">files_shop.tar</instruction>
+		
+		<instruction type="language" />
+	</instructions>
+	<instructions type="update" fromversion="1.0.0 pl 1">
+		<instruction type="file" application="shop">files_shop.tar</instruction>
+		
 		<instruction type="language" />
 	</instructions>
 </package>
