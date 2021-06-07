@@ -6,6 +6,6 @@
 	</category>
 	<category name="shop.acp.product">
 		<item name="shop.acp.product.version.packagesniffer"><![CDATA[MysteryCode Packagesniffer]]></item>
-		<item name="shop.acp.product.version.packagesniffer.availibility"><![CDATA[Für Packagesniffer sichtbar machen]]></item>
+		<item name="shop.acp.product.version.packagesniffer.availability"><![CDATA[Für Packagesniffer sichtbar machen]]></item>
 	</category>
 </language>
