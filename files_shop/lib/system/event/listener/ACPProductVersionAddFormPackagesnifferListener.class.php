@@ -34,7 +34,7 @@ class ACPProductVersionAddFormPackagesnifferListener implements IParameterizedEv
 		else if ($eventName == 'save') {
 			(new StorageAction([$eventObj->storageID], 'update', [
 				'data' => [
-					'packagesnifferAvailability' => $this->packagesnifferAvailability ? 1 : 0
+					'isAvailableForPackagesniffer' => $this->packagesnifferAvailability ? 1 : 0
 				]
 			]))->executeAction();
 		}
