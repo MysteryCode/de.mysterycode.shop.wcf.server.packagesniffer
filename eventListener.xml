@@ -12,7 +12,7 @@
 		
 		<eventlistener name="storageAddSnifferGrant">
 			<eventclassname>shop\acp\form\AbstractStorageForm</eventclassname>
-			<eventname>readFormParameters,assignVariables,save,readData</eventname>
+			<eventname>createForm</eventname>
 			<listenerclassname>shop\system\event\listener\ACPProductVersionAddFormPackagesnifferListener</listenerclassname>
 			<environment>admin</environment>
 			<inherit>1</inherit>

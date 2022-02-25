@@ -4,7 +4,8 @@ namespace shop\system\event\listener;
 
 use shop\data\storage\StorageList;
 use shop\data\wcf\package\WCFPackageList;
-use wcf\system\event\listener\IParameterizedEventListener;
+use shop\page\UpdatePage;
+use wcf\system\event\listener\AbstractEventListener;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 use wcf\util\UserUtil;
@@ -18,22 +19,25 @@ use wcf\util\XMLWriter;
  * @copyright	2018-2021 Florian Gail <https://www.mysterycode.de>
  * @license	Kostenlose Produkte <https://www.mysterycode.de/licenses/kostenlose-plugins/>
  */
-class PackagesnifferShopListener implements IParameterizedEventListener {
+class PackagesnifferShopListener extends AbstractEventListener {
 	/**
-	 * @inheritDoc
+	 * @param    UpdatePage    $eventObj
+	 * @param    array         $parameters
 	 */
-	public function execute($eventObj, $className, $eventName, array &$parameters) {
-		/** @var \shop\page\UpdatePage $eventObj */
-		
+	public function onShow(UpdatePage $eventObj, array &$parameters) : void {
 		// this script should never allow real downloads!
 		// that's why we return in case the page should send the download
-		if (isset($_POST['packageName']) || isset($_POST['packageVersion']) || $eventObj->customer !== null) return;
+		if (isset($_POST['packageName']) || isset($_POST['packageVersion']) || $eventObj->customer !== null) {
+			return;
+		}
 		
 		// return also in case the request was not triggered by the packagesniffer
 		$ipv6 = UserUtil::getIpAddress();
 		$ipv4 = UserUtil::convertIPv6To4($ipv6);
-		$whitelist = explode("\n", StringUtil::unifyNewlines(SHOP_SERVER_IP_WHITELIST));
-		if (!in_array($ipv4, $whitelist) && !in_array($ipv6, $whitelist)) return;
+		$whitelist = \explode("\n", StringUtil::unifyNewlines(SHOP_SERVER_IP_WHITELIST));
+		if (!\in_array($ipv4, $whitelist) && !\in_array($ipv6, $whitelist)) {
+			return;
+		}
 		
 		// read every active storage that belongs to a product or option
 		// skips customer related storages
@@ -45,10 +49,10 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		$packageList = new WCFPackageList();
 		if (!empty($storageList->getObjectIDs())) {
 			$packageList->setVersionLoading(true);
-			$packageList->setPackageServerID($eventObj->server->serverID);
+			$packageList->setPackageServerID($eventObj->server->getObjectID());
 			$packageList->setStorageIDs($storageList->getObjectIDs());
 		} else {
-			$packageList->getConditionBuilder()->add("1=0");
+			$packageList->getConditionBuilder()->add('1=0');
 		}
 		$packageList->readObjects();
 		
@@ -57,7 +61,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		
 		// show nice XML output generated live by PHP
 		// dancing is fun!
-		header('Content-Type: application/xml; charset=utf-8');
+		\header('Content-Type: application/xml; charset=utf-8');
 		die($this->generateXML($packageList));
 	}
 	
@@ -72,8 +76,9 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 		$xmlWriter->beginDocument('section', 'http://www.woltlab.com', 'https://www.woltlab.com/XSD/5.4/packageUpdateServer.xsd', ['name' => 'packages']);
 		
 		foreach ($packageList->getObjects() as $package) {
-			/** @var $package \shop\data\wcf\package\WCFPackage **/
-			if ($package === null) continue;
+			if ($package === null) {
+				continue;
+			}
 			
 			$xmlWriter->startElement('package', ['name' =>  $package->package]);
 			
@@ -102,10 +107,8 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 				$xmlWriter->startElement('versions');
 				
 				foreach ($versions as $version) {
-					/** @var \shop\data\wcf\package\version\WCFPackageVersion $version */
-					
 					$xmlWriter->startElement('version', [
-						'name' => $version->name, //TODO check
+						'name' => $version->getTitle(), //TODO check
 						'accessible' => 'true'
 					]);
 					
@@ -150,7 +153,7 @@ class PackagesnifferShopListener implements IParameterizedEventListener {
 						$xmlWriter->endElement();
 					}
 					
-					$updates = explode(';', $version->fromVersions);
+					$updates = \explode(';', $version->fromVersions);
 					if (!empty($updates)) {
 						$xmlWriter->startElement('fromversions');
 						foreach ($updates as $update) {
