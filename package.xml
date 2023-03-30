@@ -7,7 +7,7 @@
 		<packagedescription language="de"><![CDATA[Erlaubt bestimmten Servern auf Basis der IP-Adresse alle verfügbaren Versionen, die einem Produkt oder einer Erweiterung zugeordnet sind, zu lesen ohne Downloads zu erlauben.]]></packagedescription>
 		
 		<version>1.1.0</version>
-		<date>2022-02-25</date>
+		<date>2023-03-30</date>
 		
 		<packageurl><![CDATA[https://github.com/MysteryCode/de.mysterycode.shop.wcf.server.packagesniffer]]></packageurl>
 	</packageinformation>
@@ -23,8 +23,8 @@
 	</requiredpackages>
 	
 	<excludedpackages>
-		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
-		<excludedpackage version="8.1.0 Alpha 1">com.viecode.shop</excludedpackage>
+		<excludedpackage version="6.1.0 dev 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="8.2.0 dev 1">com.viecode.shop</excludedpackage>
 	</excludedpackages>
 	
 	<instructions type="install">
